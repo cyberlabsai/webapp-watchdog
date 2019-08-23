@@ -40,7 +40,17 @@ export default {
     //   ...mapGetters([])
   },
   methods: {
-    //   ...mapActions([])
+    doGetCommentaries () {
+      // console.log('Conection started...')
+    }
+  },
+  socket: {
+    events: {
+      connect () {
+        // console.log('Socket connected!')
+        return this.doGetCommentaries()
+      }
+    }
   },
   filters: {},
   watch: {}
