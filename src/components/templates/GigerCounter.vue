@@ -1,9 +1,13 @@
 <template>
-  <div class="row justify-center">
-    <div class="q-mt-md">
-      <h1> Hello </h1>
+  <q-page>
+    <div class="container column wrap justify-center">
+      <div class="row justify-center">
+        <div class="input q-mt-xl">
+          <q-input rounded outlined v-model="hashtag" label="Hashtag" width="200px"/>
+        </div>
+      </div>
     </div>
-  </div>
+  </q-page>
 </template>
 
 <script>
@@ -25,7 +29,9 @@ export default {
     //    }
     //  }
   },
-  data: () => ({}),
+  data: () => ({
+    hashtag: ''
+  }),
   created () {
     //  document.addEventListener('keyup', event => this.method(event))
   },
@@ -35,19 +41,19 @@ export default {
     //  document.removeEventListener('keyup', event => this.method(event))
   },
   destroyed () {},
-  components: {},
+  components: {
+  },
   computed: {
     //   ...mapGetters([])
   },
   methods: {
     doGetCommentaries () {
-      // console.log('Conection started...')
+      this.$socket.emit('hashtag', this.hashtag)
     }
   },
   socket: {
     events: {
       connect () {
-        // console.log('Socket connected!')
         return this.doGetCommentaries()
       }
     }
@@ -56,3 +62,12 @@ export default {
   watch: {}
 }
 </script>
+
+<style scoped>
+.container {
+  width: 100%;
+}
+.input {
+  width: 400px;
+}
+</style>

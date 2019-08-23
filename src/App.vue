@@ -1,6 +1,10 @@
 <template>
   <div id="q-app">
-    <router-view />
+    <q-layout>
+      <q-page-container>
+        <router-view />
+      </q-page-container>
+    </q-layout>
   </div>
 </template>
 
