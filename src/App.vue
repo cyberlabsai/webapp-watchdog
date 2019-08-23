@@ -15,4 +15,7 @@ export default {
 </script>
 
 <style>
+.card__content {
+  width: 300px;
+}
 </style>

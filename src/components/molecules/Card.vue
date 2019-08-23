@@ -1,5 +1,7 @@
 <template lang="pug">
 include ../atoms/card.pug
+
++card('twitter', 'José', 'lalalalalalalalal lalalalalalalalal lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala ')
 </template>
 
 <script>
