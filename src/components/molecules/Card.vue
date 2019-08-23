@@ -1,5 +1,5 @@
 <template lang="pug">
-  include @/components/atoms/card.pug
+include ../../atoms/card.pug
 </template>
 
 <script>

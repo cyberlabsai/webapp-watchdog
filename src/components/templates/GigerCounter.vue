@@ -4,6 +4,7 @@
       <div class="row justify-center">
         <div class="input q-mt-xl">
           <q-input rounded outlined v-model="hashtag" label="Hashtag" width="200px"/>
+          <Card></Card>
         </div>
       </div>
     </div>
@@ -15,6 +16,10 @@
 //   mapGetters,
 //   mapActions
 // } from 'vuex'
+
+import {
+  Card
+} from '../molecules'
 
 export default {
   props: {
@@ -42,6 +47,7 @@ export default {
   },
   destroyed () {},
   components: {
+    Card
   },
   computed: {
     //   ...mapGetters([])
