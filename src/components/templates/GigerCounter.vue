@@ -1,7 +1,7 @@
 <template lang="pug">
 q-page
   .container.column.no-wrap.justify-center
-    Gauge
+    Gauge(:angle="0")
     .container__giger-header.row.justify-center.no-wrap
     .giger.row.justify-center.items-end
       .card.column.justify-center

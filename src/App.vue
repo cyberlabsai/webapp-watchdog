@@ -15,6 +15,11 @@ export default {
 </script>
 
 <style>
+:root {
+  --startDeg: 0deg;
+  --endDeg: 5deg;
+}
+
 .card__content {
   width: 300px;
 }
