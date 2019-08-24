@@ -20,6 +20,17 @@ export default {
   --endDeg: 5deg;
 }
 
+html {
+  /* position: absolute; */
+  transform: scale(.8) translateY(-100px);
+  /* display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center; */
+}
+
 .card__content {
   width: 300px;
 }
