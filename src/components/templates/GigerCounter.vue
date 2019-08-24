@@ -12,10 +12,11 @@
 </template>
 
 <script>
-// import {
-//   mapGetters,
-//   mapActions
-// } from 'vuex'
+
+import {
+  mapGetters,
+  mapActions
+} from 'vuex'
 
 import {
   Card
@@ -40,7 +41,9 @@ export default {
   created () {
     //  document.addEventListener('keyup', event => this.method(event))
   },
-  mounted () {},
+  mounted () {
+    this.setCommentaries(['fooo', 'fooo', 'fooo'])
+  },
   updated () {},
   beforeDestroy () {
     //  document.removeEventListener('keyup', event => this.method(event))
@@ -50,9 +53,14 @@ export default {
     Card
   },
   computed: {
-    //   ...mapGetters([])
+    ...mapGetters('commentaries', [
+      'getCommentaries'
+    ])
   },
   methods: {
+    ...mapActions('commentaries', [
+      'setCommentaries'
+    ]),
     doGetCommentaries () {
       this.$socket.emit('hashtag', this.hashtag)
     }

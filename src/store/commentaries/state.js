@@ -1,3 +1,5 @@
-export default {
-  //
+export const state = {
+  commentaries: []
 }
+
+export default state
