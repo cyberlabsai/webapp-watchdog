@@ -2,8 +2,8 @@
 include ../atoms/card.pug
 
 .card
-  +card('twitter', 'José')
-  .card__content lalalalala lalalalala lalalalala lalalalala lalalalala lalalalala lalalalala lalalalala lalalalala lalalalala'
+  +card('{{ message.platform || "twitter" }}', '{{ message.user || "José" }}')
+  .card__content {{ message.content || 'Watch Dog'}}
 </template>
 
 <script>
@@ -14,16 +14,13 @@ include ../atoms/card.pug
 
 export default {
   props: {
-    //  prop: {
-    //    type: String,
-    //    required: false,
-    //    validator (value) {
-    //      return value
-    //    },
-    //    default () {
-    //      return ''
-    //    }
-    //  }
+    message: {
+      type: Object,
+      required: false,
+      default () {
+        return ''
+      }
+    }
   },
   data: () => ({}),
   created () {

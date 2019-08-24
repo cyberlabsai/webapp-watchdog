@@ -20,12 +20,11 @@ q-page
         .content__items(
           ref="commentaries"
         )
-          Card
-          Card
-          Card
-          Card
-          Card
-          Card
+          Card.dont-select(
+            v-for="(commentaries, index) in takeCommentaries",
+            min-v-for="(commentaries, index) in takeCommentaries",
+            :key="index"
+          )
 
         .content__arrows.row.flex-center
           img(
@@ -86,7 +85,7 @@ export default {
     //  document.addEventListener('keyup', event => this.method(event))
   },
   mounted () {
-    this.setCommentaries(['fooo', 'fooo', 'fooo', 'foo'])
+    this.setCommentaries(['fooo', 'fooo', 'fooo', 'foo', 'fooo', 'fooo', 'fooo', 'foo', 'fooo', 'fooo', 'fooo', 'foo'])
   },
   updated () {},
   beforeDestroy () {
@@ -113,7 +112,11 @@ export default {
     ...mapActions('commentaries', [
       'setCommentaries'
     ]),
+    ...mapActions('loading', [
+      'setLoading'
+    ]),
     doDivScroll (scrollDirection) {
+      // this.setLoading(true)
       const container = this.$refs.commentaries
       let scrollPosition = container.scrollTop || 0
 
@@ -224,6 +227,7 @@ animation(nameAnimation, durationAnimation, functionAnimation, delayAnimation, r
     overflow-x: hidden
     overflow-y: scroll
     height: 390px
+    min-height: 390px
     scrollbar-width: none
     scroll-behavior: smooth
 
@@ -254,4 +258,7 @@ animation(nameAnimation, durationAnimation, functionAnimation, delayAnimation, r
   height: 100%
   width: 100%
   position: relative
+
+.dont-select
+  user-select: none
 </style>
