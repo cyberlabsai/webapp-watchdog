@@ -1,11 +1,28 @@
 <template lang="pug">
 q-page
-  .container.column.wrap.justify-center
-    .row.justify-center
-      .input.q-mt-xl
-        Gauge
-        q-input(rounded, outlined, v-model='hashtag', label='Hashtag')
-        Card
+  .container.column.no-wrap.justify-center
+    Gauge
+    .container__giger-header.row.justify-center.no-wrap
+    .giger.row.justify-center.items-end
+      .card.column.justify-center
+        .card__arrows.row.flex-center
+          img(
+            src="../../assets/arrow-up.svg"
+          )
+        .card__holder
+          .card__items
+            Card
+            Card
+            Card
+        .card__arrows.row.flex-center
+          img(
+            src="../../assets/arrow-down.svg"
+          )
+      RadiatorDetector(
+        :occurrenceNumber="takeCommentaries.length",
+        :total="takeCommentaries.length",
+        status="online"
+      )
 </template>
 
 <script>
@@ -20,7 +37,8 @@ import {
 } from '../atoms'
 
 import {
-  Card
+  Card,
+  RadiatorDetector
 } from '../molecules'
 
 export default {
@@ -43,7 +61,7 @@ export default {
     //  document.addEventListener('keyup', event => this.method(event))
   },
   mounted () {
-    this.setCommentaries(['fooo', 'fooo', 'fooo'])
+    this.setCommentaries(['fooo', 'fooo', 'fooo', 'foo'])
   },
   updated () {},
   beforeDestroy () {
@@ -52,12 +70,19 @@ export default {
   destroyed () {},
   components: {
     Gauge,
-    Card
+    Card,
+    RadiatorDetector
   },
   computed: {
     ...mapGetters('commentaries', [
       'getCommentaries'
-    ])
+    ]),
+    takeCommentaries () {
+      if (!this.getCommentaries) {
+        return []
+      }
+      return this.getCommentaries
+    }
   },
   methods: {
     ...mapActions('commentaries', [
@@ -80,8 +105,34 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+.q-input-target, .q-input-shadow
+  color red
 .container
   width: 100%
+  height: 100%
 .input
-  width: 400px
+  z-index: 10
+  position: absolute
+  width: 330px
+  height: 30px !important
+  top: 140px
+  left: 440px
+.card
+  z-index: 10
+  margin-left: -28px
+  position: absolute
+  width: 312px
+  &__arrows
+    margin-left: -30px
+    width: 100%
+  &__holder
+    position: relative
+    .holder
+      &__items
+        position: relative
+        height: 200px
+.giger
+  height: 100%
+  width: 100%
+  position: relative
 </style>
