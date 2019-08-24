@@ -3,7 +3,7 @@ q-page
   .container.column.wrap.justify-center
     .row.justify-center
       .input.q-mt-xl
-        Gauge
+        Gauge(:angle="0")
         q-input(rounded, outlined, v-model='hashtag', label='Hashtag')
         Card
 </template>
