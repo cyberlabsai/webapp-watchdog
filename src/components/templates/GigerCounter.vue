@@ -1,14 +1,11 @@
-<template>
-  <q-page>
-    <div class="container column wrap justify-center">
-      <div class="row justify-center">
-        <div class="input q-mt-xl">
-          <q-input rounded outlined v-model="hashtag" label="Hashtag"/>
-          <Card></Card>
-        </div>
-      </div>
-    </div>
-  </q-page>
+<template lang="pug">
+q-page
+  .container.column.wrap.justify-center
+    .row.justify-center
+      .input.q-mt-xl
+        Gauge
+        q-input(rounded, outlined, v-model='hashtag', label='Hashtag')
+        Card
 </template>
 
 <script>
@@ -17,6 +14,10 @@ import {
   mapGetters,
   mapActions
 } from 'vuex'
+
+import {
+  Gauge
+} from '../atoms'
 
 import {
   Card
@@ -50,6 +51,7 @@ export default {
   },
   destroyed () {},
   components: {
+    Gauge,
     Card
   },
   computed: {
