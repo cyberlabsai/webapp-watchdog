@@ -94,17 +94,7 @@ export default {
   methods: {
     ...mapActions('commentaries', [
       'setCommentaries'
-    ]),
-    doGetCommentaries () {
-      this.$socket.emit('hashtag', this.hashtag)
-    }
-  },
-  socket: {
-    events: {
-      connect () {
-        return this.doGetCommentaries()
-      }
-    }
+    ])
   },
   filters: {},
   watch: {}
