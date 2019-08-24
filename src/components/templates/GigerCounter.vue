@@ -1,7 +1,14 @@
 <template lang="pug">
 q-page
   .container.column.no-wrap.justify-center
-    .container__giger-header.row.justify-center.no-wrap
+    .logo
+      img.dog(
+        src="../../assets/watch-dog-dog.svg"
+      )
+      img.letter(
+        src="../../assets/watch-dog-letter.svg"
+      )
+
     .giger.row.justify-center.items-end
       .content.row.content-between
         .content__arrows.row.flex-center
@@ -28,6 +35,12 @@ q-page
 
       .gauge
         Gauge(:angle="0")
+
+      .radiation
+        img(src="../../assets/radiation.svg")
+
+      .radiation.radiation--animation
+        img(src="../../assets/radiation.svg")
 
       RadiatorDetector(
         :occurrenceNumber="takeCommentaries.length",
@@ -127,6 +140,58 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+animation(nameAnimation, durationAnimation, functionAnimation, delayAnimation, repeatAnimation, directionAnimation, stateAnimation)
+  animation-name: nameAnimation
+  animation-duration: durationAnimation
+  animation-timing-function: functionAnimation
+  animation-delay: delayAnimation
+  animation-iteration-count: repeatAnimation
+  animation-direction: directionAnimation
+  animation-play-state: stateAnimation
+
+@keyframes simple-pulse
+  0%
+    transform: scale(1)
+    opacity: 1
+
+  50%
+    transform: scale(2)
+    opacity: 0
+
+  100%
+    transform: scale(1)
+    opacity: 0
+
+@keyframes change-opacity
+  0%
+    opacity: 0.5
+
+  50%
+    opacity: 0.1
+
+  100%
+    opacity: 0.5
+
+.logo
+  animation(change-opacity, 9s, cubic-bezier(9,.175), 0, infinite, normal, running)
+  position: absolute
+  height: 100%
+  width: 100%
+  top: 0
+  left: 0
+  display: flex
+  flex-direction: row
+  flex-wrap: nowrap
+  justify-content: space-between
+  align-content: center
+  align-items: center
+  transition-timing-function: cubic-bezier(.77,1.5,.175,1)
+  transition-duration: .4s
+  transition-property: all
+
+  > img
+    width: 20%
+
 .q-input-target, .q-input-shadow
   color red
 
@@ -174,6 +239,15 @@ export default {
   top: 128px;
   margin-left: -6px;
   transform: scale(1.2)
+
+.radiation
+  top: 355px
+  margin-left: 225px
+  position: absolute
+  z-index: 10
+
+  &--animation
+    animation(simple-pulse, 2s, cubic-bezier(9,.175), 0, infinite, normal, running)
 
 .giger
   /* transform: scale(.7) */
