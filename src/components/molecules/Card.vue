@@ -1,7 +1,9 @@
 <template lang="pug">
 include ../atoms/card.pug
 
-+card('twitter', 'José', 'lalalalalalalalal lalalalalalalalal lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala lala ')
+.card
+  +card('twitter', 'José')
+  .card__content lalalalala lalalalala lalalalala lalalalala lalalalala lalalalala lalalalala lalalalala lalalalala lalalalala'
 </template>
 
 <script>
@@ -45,5 +47,17 @@ export default {
 }
 </script>
 
-<style lang="sass">
+<style scoped>
+.card {
+  position: relative;
+}
+
+.card__content {
+  position: absolute;
+  overflow: hidden;
+  width: 260px;
+  height: 43px;
+  bottom: 20px;
+  left: 36px;
+}
 </style>
