@@ -83,11 +83,16 @@ module.exports = function (ctx) {
           loader: 'pug-plain-loader'
         })
         cfg.module.rules.push({
-          test: /\.scss$/,
+          test: /\.sass$/,
           use: [
             'vue-style-loader',
             'css-loader',
-            'sass-loader'
+            {
+              loader: 'sass-loader',
+              options: {
+                indentedSyntax: true
+              }
+            }
           ]
         })
       }

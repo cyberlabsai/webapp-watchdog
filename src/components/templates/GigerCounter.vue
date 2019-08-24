@@ -77,11 +77,9 @@ export default {
 }
 </script>
 
-<style scoped>
-.container {
-  width: 100%;
-}
-.input {
-  width: 400px;
-}
+<style lang="stylus" scoped>
+.container
+  width: 100%
+.input
+  width: 400px
 </style>
