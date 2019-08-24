@@ -7,9 +7,12 @@ q-page
         .content__arrows.row.flex-center
           img(
             src="../../assets/arrow-up.svg"
+            @click="doDivScroll('top')"
           )
 
-        .content__items
+        .content__items(
+          ref="commentaries"
+        )
           Card
           Card
           Card
@@ -19,7 +22,8 @@ q-page
 
         .content__arrows.row.flex-center
           img(
-            src="../../assets/arrow-down.svg"
+            src="../../assets/arrow-down.svg",
+            @click="doDivScroll('bottom')"
           )
 
       .gauge
@@ -62,7 +66,8 @@ export default {
     //  }
   },
   data: () => ({
-    hashtag: ''
+    hashtag: '',
+    scrollPosition: 0
   }),
   created () {
     //  document.addEventListener('keyup', event => this.method(event))
@@ -94,7 +99,28 @@ export default {
   methods: {
     ...mapActions('commentaries', [
       'setCommentaries'
-    ])
+    ]),
+    doDivScroll (scrollDirection) {
+      const container = this.$refs.commentaries
+      let scrollPosition = container.scrollTop || 0
+      console.log(scrollPosition)
+
+      if (scrollDirection === 'bottom') {
+        scrollPosition = scrollPosition + 200
+
+        // if (scrollPosition >= (container.firstElementChild.clientHeight * 0.9)) {
+        //   scrollPosition = container.firstElementChild.clientHeight
+        // }
+      } else if (scrollDirection === 'top') {
+        scrollPosition = scrollPosition - 200
+
+        if (scrollPosition <= 0) {
+          scrollPosition = 0
+        }
+      }
+      this.scrollPosition = scrollPosition
+      container.scrollTop = scrollPosition
+    }
   },
   filters: {},
   watch: {}
@@ -135,6 +161,7 @@ export default {
     overflow-y: scroll
     height: 390px
     scrollbar-width: none
+    scroll-behavior: smooth
 
     &::-webkit-scrollbar
       width: 0
