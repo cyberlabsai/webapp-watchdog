@@ -106,7 +106,6 @@ export default {
       // this.setLoading(true)
       const container = this.$refs.commentaries
       let scrollPosition = container.scrollTop || 0
-      console.log(scrollPosition)
 
       if (scrollDirection === 'bottom') {
         scrollPosition = scrollPosition + 200
