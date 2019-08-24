@@ -2,8 +2,9 @@ import http from '../../requester/commentaries'
 
 const actions = {
   setCommentaries: ({ commit }, payload) => {
-    console.log(http)
-    commit('saveCommentaries', payload)
+    return http.fetch.fetchCommentaries().then((response) => {
+      commit('saveCommentaries', response)
+    })
   }
 }
 

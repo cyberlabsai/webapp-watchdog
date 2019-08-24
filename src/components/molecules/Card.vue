@@ -2,8 +2,8 @@
 include ../atoms/card.pug
 
 .card
-  +card('{{ message.platform || "twitter" }}', '{{ message.user || "José" }}')
-  .card__content {{ message.content || 'Watch Dog'}}
+  +card('twitter', '{{ commentary.username || "José" }}')
+  .card__content {{ commentary.tweet || 'Watch Dog'}}
 </template>
 
 <script>
@@ -14,7 +14,7 @@ include ../atoms/card.pug
 
 export default {
   props: {
-    message: {
+    commentary: {
       type: Object,
       required: false,
       default () {

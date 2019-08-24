@@ -1,8 +1,9 @@
 import http from 'src/requester'
 
 export const fetchCommentaries = () => {
-  return http.get('/foo')
+  return http.get('/termometer')
     .then((response) => {
-      console.log(response)
+      console.log(response.data)
+      return response.data
     })
 }

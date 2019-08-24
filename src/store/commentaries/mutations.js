@@ -1,6 +1,6 @@
 export const mutations = {
   saveCommentaries: (state, commentaries) => {
-    state.commentaries = commentaries
+    state.commentaries = [...commentaries]
   }
 }
 

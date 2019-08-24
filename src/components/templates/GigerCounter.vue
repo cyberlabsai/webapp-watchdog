@@ -10,7 +10,9 @@ q-page
       )
 
     .giger.row.justify-center.items-end
-      .content.row.content-between
+      .content.row.content-between(
+        v-if="getToxicCommentaries.length"
+      )
         .content__arrows.row.flex-center
           img(
             src="../../assets/arrow-up.svg"
@@ -21,8 +23,8 @@ q-page
           ref="commentaries"
         )
           Card.dont-select(
-            v-for="(commentaries, index) in takeCommentaries",
-            min-v-for="(commentaries, index) in takeCommentaries",
+            v-for="(commentary, index) in getToxicCommentaries",
+            :commentary="commentary"
             :key="index"
           )
 
@@ -33,7 +35,7 @@ q-page
           )
 
       .gauge
-        Gauge(:angle="0")
+        Gauge(:angle="getToxicCommentaries.length")
 
       .radiation
         img(src="../../assets/radiation.svg")
@@ -42,8 +44,8 @@ q-page
         img(src="../../assets/radiation.svg")
 
       RadiatorDetector(
-        :occurrenceNumber="takeCommentaries.length",
-        :total="takeCommentaries.length",
+        :occurrenceNumber="getToxicCommentaries.length",
+        :total="takeCommentaries",
         status="online"
       )
 </template>
@@ -85,7 +87,8 @@ export default {
     //  document.addEventListener('keyup', event => this.method(event))
   },
   mounted () {
-    this.setCommentaries(['fooo', 'fooo', 'fooo', 'foo', 'fooo', 'fooo', 'fooo', 'foo', 'fooo', 'fooo', 'fooo', 'foo'])
+    this.setLoading(true)
+    this.setCommentaries().then(() => this.setLoading(false))
   },
   updated () {},
   beforeDestroy () {
@@ -99,11 +102,12 @@ export default {
   },
   computed: {
     ...mapGetters('commentaries', [
-      'getCommentaries'
+      'getCommentaries',
+      'getToxicCommentaries'
     ]),
     takeCommentaries () {
       if (!this.getCommentaries) {
-        return []
+        return 0
       }
       return this.getCommentaries
     }
