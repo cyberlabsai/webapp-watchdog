@@ -23,6 +23,7 @@ export default {
 html {
   /* position: absolute; */
   transform: scale(.8) translateY(-100px);
+  overflow: hidden;
   /* display: flex;
   flex-direction: column;
   flex-wrap: nowrap;

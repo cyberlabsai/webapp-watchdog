@@ -13,6 +13,9 @@ q-page
           Card
           Card
           Card
+          Card
+          Card
+          Card
 
         .content__arrows.row.flex-center
           img(
@@ -142,6 +145,10 @@ export default {
     overflow-y: scroll
     height: 390px
     scrollbar-width: none
+
+    &::-webkit-scrollbar
+      width: 0
+      height: 0
 
 .gauge
   position: absolute
