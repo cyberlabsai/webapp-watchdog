@@ -3,7 +3,7 @@
     <div class="container column wrap justify-center">
       <div class="row justify-center">
         <div class="input q-mt-xl">
-          <q-input rounded outlined v-model="hashtag" label="Hashtag" width="200px"/>
+          <q-input rounded outlined v-model="hashtag" label="Hashtag"/>
           <Card></Card>
         </div>
       </div>
