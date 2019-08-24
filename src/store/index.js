@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import commentaries from './commentaries'
+import loading from './loading'
 
 // import example from './module-example'
 
@@ -14,7 +15,8 @@ Vue.use(Vuex)
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
-      commentaries
+      commentaries,
+      loading
     },
 
     // enable strict mode (adds overhead!)
