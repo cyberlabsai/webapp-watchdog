@@ -84,10 +84,10 @@ export default {
     scrollPosition: 0
   }),
   created () {
+    this.setLoading(true)
     //  document.addEventListener('keyup', event => this.method(event))
   },
   mounted () {
-    this.setLoading(true)
     this.setCommentaries().then(() => this.setLoading(false))
   },
   updated () {},
